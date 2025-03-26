@@ -1,0 +1,20 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#.php uzantısında php uzantısının çalışmasını sağlar
+
+RewriteRule ^anasayfa$ index.php [NC,L]
+#istemiş olduğumuz adresi istediğimiz gibi açabiliriz.
+
+RewriteRule ^ilanlar-([0-9a-zA-Z-_]+)-([0-9]+)$ ilanlar.php?sef=$1&id=$2 [L,QSA]
+RewriteRule ^ilandetay-([0-9a-zA-Z-_]+)-([0-9]+)$ ilan-detay.php?sef=$1&id=$2 [L,QSA]
+
+
+
+#seo uyumlu url oluşturuyoruz.
+
+#ErrorDocument 404 https://yazilimyolcusu.com/
+#hata alınırsa yönlenecek sayfa
